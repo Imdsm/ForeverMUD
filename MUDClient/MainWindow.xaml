@@ -1,8 +1,0 @@
-﻿<Window x:Name="MainWindow1" x:Class="MUDClient.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MUDClient" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" UseLayoutRounding="False">
-    <Grid>
-        
-    </Grid>
-</Window>
