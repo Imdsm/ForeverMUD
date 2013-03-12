@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>fa574669-1d68-4e3d-bafe-3aad567558d3</ProjectGuid>
+    <ProjectGuid>{7AB956F1-A082-4AA8-95C4-E51319DE79F0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MUDServer</RootNamespace>
