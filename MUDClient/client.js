@@ -1,8 +1,11 @@
 $(function() {
 
-	// focus on the textbox, without selecting all the text
-	$("#input").focus().val($("#input").val());	
-	
+	// focus and refocus
+	$("#input").focus();
+	$("#input").blur(function() {
+		setTimeout(function() { $("#input").focus(); }, 0);
+	});
+
 	// handle input 
 	$("#input").keypress(function(event) {
 		if (event.which == 13) {
@@ -11,8 +14,8 @@ $(function() {
 			$("#input").val("");
 			
 			$("#output").append(value + "<br>");
-			$("#output").scrollTop(999999);			
+			$("#output").scrollTop(999999);
 		}
 	});
-	
+
 });
