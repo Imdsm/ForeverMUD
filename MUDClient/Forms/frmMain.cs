@@ -48,8 +48,7 @@ namespace MUDClient.Forms
         public void WriteToMain(string s, Color color)
         {            
             rtbMain.AppendText(s, color);
-            rtbMain.SelectionStart = rtbMain.Text.Length;
-            rtbMain.ScrollToCaret();
+            rtbMain.ScrollToBottom();
         }
 
         public void ResetMain()
@@ -77,8 +76,7 @@ namespace MUDClient.Forms
         public void WriteToSide(string s, Color color)
         {
             rtbSide.AppendText(s, color);
-            rtbSide.SelectionStart = rtbSide.Text.Length;
-            rtbSide.ScrollToCaret();
+            rtbMain.ScrollToBottom();
         }
 
         public void ResetSide()
@@ -86,5 +84,49 @@ namespace MUDClient.Forms
             rtbSide.ResetText();
         }
         #endregion
+
+        #region Form Input
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.PageUp) rtbMain.ScrollLineUp();
+            else if (e.KeyCode == Keys.PageDown) rtbMain.ScrollLineDown();
+            else if (e.KeyCode == Keys.Home) rtbMain.ScrollToTop();
+            else if (e.KeyCode == Keys.End) rtbMain.ScrollToBottom();
+        }
+
+        private void txtInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                ProcessInput(txtInput.Text);
+                txtInput.Text = "";
+                e.Handled = true;
+            }
+        }        
+        #endregion
+
+        #region Input Processing
+        private void ProcessInput(string s)
+        {
+            WriteLineToMain("");
+            WriteLineToMain("> " + s, Color.Gray);
+
+            if (s == "loop")
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    WriteLineToMain(string.Format("Looping {0} of {1}", i, 20));
+                }
+            }
+        }
+        #endregion        
     }
 }
